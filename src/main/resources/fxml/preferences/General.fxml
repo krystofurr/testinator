@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.pe.cjsigouin.testinator.controller.scene.preferences.GeneralController">
+   <children>
+      <VBox layoutX="200.0" layoutY="62.0" prefHeight="200.0" prefWidth="182.0">
+         <children>
+            <RadioButton fx:id="radioBtn_chrome" mnemonicParsing="false" onAction="#handleRadioBtnChrome" text="Google Chrome">
+               <toggleGroup>
+                  <ToggleGroup fx:id="driverGroup" />
+               </toggleGroup>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="radioBtn_firefox" mnemonicParsing="false" onAction="#handleRadioBtnFirefox" text="Firefox" toggleGroup="$driverGroup">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="radioBtn_ie" mnemonicParsing="false" onAction="#handleRadioBtnIE" text="Internet Explorer" toggleGroup="$driverGroup">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </RadioButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
