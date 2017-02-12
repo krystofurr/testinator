@@ -69,6 +69,8 @@
             <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
               <children>
                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                        <Button fx:id="btnChrome" layoutX="58.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleButtonChrome" text="Chrome" />
+                        <Button fx:id="btnFirefox" layoutX="58.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleButtonFirefox" text="Firefox" />
               </children>
             </AnchorPane>
           </content>

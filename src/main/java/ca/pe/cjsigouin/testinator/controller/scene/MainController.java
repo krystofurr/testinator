@@ -8,11 +8,14 @@ package ca.pe.cjsigouin.testinator.controller.scene;
 import ca.pe.cjsigouin.testinator.AppConfig;
 import ca.pe.cjsigouin.testinator.SceneConfig;
 import ca.pe.cjsigouin.testinator.manager.SceneManager;
+import ca.pe.cjsigouin.testinator.selenium.CustomTestHandler;
+import ca.pe.cjsigouin.testinator.selenium.SeleniumDriverChrome;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
@@ -21,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -42,6 +46,9 @@ public class MainController implements Initializable {
     // Under 'Help'
     @FXML private MenuItem menuItem_about;
     
+    @FXML private Button btnChrome;
+    @FXML private Button btnFirefox;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -61,13 +68,27 @@ public class MainController implements Initializable {
         stage.show();
             // Hide this current window (if this is what you want)
 //            ((Node)(event.getSource())).getScene().getWindow().hide();
-
     }
     
     @FXML
+    @Transactional(value = "transactionManager")
     private void handleMenuItemQuit(ActionEvent event) {
+
         log.info("Menu Item [Quit] has been clicked");
         System.exit(0);
+    }
+    
+    @FXML
+    private void handleButtonChrome(ActionEvent event) {
+        log.info("Running Chrome Driver");
+        Thread selenium = new Thread(new SeleniumDriverChrome(new CustomTestHandler("http://www.google.ca")));
+        selenium.start();
+    }
+    
+    @FXML
+    private void handleButtonFirefox(ActionEvent event) {
+        log.info("Running Firefox Driver");
+        
     }
     
 }

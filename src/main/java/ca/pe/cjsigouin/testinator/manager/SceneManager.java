@@ -8,12 +8,12 @@ package ca.pe.cjsigouin.testinator.manager;
 import ca.pe.cjsigouin.testinator.SceneConfig;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -21,6 +21,8 @@ import javafx.stage.Stage;
  */
 public class SceneManager {
     
+    private static final Logger log = LoggerFactory.getLogger(SceneManager.class);
+
     public static Stage stage;
     private static HashMap<String, Scene> scenes;
     public Parent splash, intro, main, preferences;
@@ -51,7 +53,7 @@ public class SceneManager {
 //                scenes.put("report", new Scene(report));
 //                scenes.put("testCreation", new Scene(testCreation));
             } catch (IOException ex) {
-                Logger.getLogger(SceneManager.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
     }

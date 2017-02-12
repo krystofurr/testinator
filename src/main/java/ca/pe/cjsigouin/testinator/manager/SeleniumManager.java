@@ -9,6 +9,8 @@ import ca.pe.cjsigouin.testinator.SeleniumConfig;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -16,6 +18,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class SeleniumManager implements Runnable {
   
+    private static final Logger log = LoggerFactory.getLogger(SeleniumManager.class);
+
     private static WebDriver driver; // Currently used
     
     public static void loadDrivers() {
@@ -28,7 +32,7 @@ public class SeleniumManager implements Runnable {
 
 //        SeleniumManager.driver = drivers.get(SeleniumConfig.DRIVER_CHROME); // Default: Chrome
         
-
+        
     }  
 
     public static WebDriver getDriver() {
@@ -48,6 +52,7 @@ public class SeleniumManager implements Runnable {
 
 	  //Launch website
 	  driver.navigate().to("http://www.google.ca");
+          log.info("Thread should be terminated now");
     }
     
     

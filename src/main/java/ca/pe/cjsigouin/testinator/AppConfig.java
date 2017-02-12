@@ -5,10 +5,17 @@
  */
 package ca.pe.cjsigouin.testinator;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+
 /**
  *
  * @author krystofurr
  */
+@Configuration
+@ComponentScan(basePackages = {"ca.pe.cjsigouin.testinator"})
+@Import({SpringJpaConfig.class})
 public class AppConfig {
     
     public final static String TITLE_APP   = "Testinator";
@@ -18,5 +25,7 @@ public class AppConfig {
     
     // Window Titles
     public final static String TITLE_PREFERENCES = "Preferences";
+ 
     
+
 }
