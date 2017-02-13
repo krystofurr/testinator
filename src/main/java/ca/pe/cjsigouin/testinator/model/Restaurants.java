@@ -5,13 +5,15 @@
  */
 package ca.pe.cjsigouin.testinator.model;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 
 
@@ -22,9 +24,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="restaurants")
-public class Restaurants implements Serializable {
-    
-    
+public @Getter @Setter @ToString(callSuper=true, includeFieldNames=true)
+    class Restaurants 
+        extends BaseModel<Integer> {
+
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,36 +38,6 @@ public class Restaurants implements Serializable {
     
     @Column (name="cityname")
     private String cityName; 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getRestName() {
-        return restName;
-    }
-
-    public void setRestName(String restName) {
-        this.restName = restName;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    @Override
-    public String toString() {
-        return "Restaurants{" + "id=" + id + ", restName=" + restName + ", cityName=" + cityName + '}';
-    }
- 
 }
 
     

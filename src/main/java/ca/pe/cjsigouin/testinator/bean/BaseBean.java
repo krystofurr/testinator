@@ -3,14 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ca.pe.cjsigouin.testinator.dao;
+package ca.pe.cjsigouin.testinator.bean;
 
-import ca.pe.cjsigouin.testinator.model.Restaurants;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
  * @author krystofurr
  */
-public interface IRestaurantsDAO extends IBaseDAO<Restaurants> {
+public @Getter @Setter @ToString class BaseBean {
+    
+    private Integer id;
 
 }
+

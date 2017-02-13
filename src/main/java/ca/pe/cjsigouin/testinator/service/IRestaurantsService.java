@@ -5,14 +5,13 @@
  */
 package ca.pe.cjsigouin.testinator.service;
 
+import ca.pe.cjsigouin.testinator.bean.RestaurantsBean;
 import ca.pe.cjsigouin.testinator.model.Restaurants;
-import java.util.List;
 
 /**
  *
  * @author krystofurr
  */
-public interface IRestaurantsService {
-    public void create(Restaurants obj);
-    public List<Restaurants> findAll();
+public interface IRestaurantsService extends IBaseService<RestaurantsBean, Restaurants> {
+
 }

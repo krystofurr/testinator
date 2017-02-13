@@ -7,11 +7,14 @@ package ca.pe.cjsigouin.testinator.controller.scene;
 
 import ca.pe.cjsigouin.testinator.Main;
 import ca.pe.cjsigouin.testinator.SceneConfig;
+import ca.pe.cjsigouin.testinator.bean.RestaurantsBean;
+import ca.pe.cjsigouin.testinator.dao.IRestaurantsDAO;
+import ca.pe.cjsigouin.testinator.exception.BaseServiceException;
 import ca.pe.cjsigouin.testinator.manager.SceneManager;
-import ca.pe.cjsigouin.testinator.model.Restaurants;
 import ca.pe.cjsigouin.testinator.service.IRestaurantsService;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,6 +31,7 @@ public class IntroController implements Initializable {
 
     private static final Logger log = LoggerFactory.getLogger(IntroController.class);
 
+    IRestaurantsDAO dao = (IRestaurantsDAO) Main.getContext().getBean("restaurantsDao");
     IRestaurantsService service = (IRestaurantsService) Main.getContext().getBean("restaurantsService");
     
     @FXML private AnchorPane anchorPane; // Root container
@@ -39,11 +43,18 @@ public class IntroController implements Initializable {
         System.out.println("Create Test Clicked");
         SceneManager.getStage().setScene(SceneManager.getScenes().get(SceneConfig.SCENE_MAIN));
         
-        Restaurants restaurant = new Restaurants();
-        restaurant.setCityName("testing123");
-        restaurant.setRestName("testing321");
-        service.create(restaurant);
-        log.info(service.findAll().toString());
+        RestaurantsBean bean = new RestaurantsBean();
+//        bean.setId(2);
+        bean.setCityName("blah123666");
+        bean.setRestName("blah321666");
+        try {
+            log.info(service.findAll().toString());
+            service.create(bean);
+            log.info(service.findAll().toString());
+        } catch (BaseServiceException ex) {
+            java.util.logging.Logger.getLogger(IntroController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
     
     @FXML

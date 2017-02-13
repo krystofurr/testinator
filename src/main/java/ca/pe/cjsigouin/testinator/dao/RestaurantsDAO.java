@@ -13,9 +13,10 @@ import org.springframework.stereotype.Repository;
  * @author krystofurr
  */
 @Repository("restaurantsDao")
-public class RestaurantsDAO extends AbstractBaseDAO<Restaurants> implements IRestaurantsDAO{
- 
-   public RestaurantsDAO(){
-      setClazz(Restaurants.class );
-   }
+public class RestaurantsDAO extends BaseDAO<Restaurants> implements IRestaurantsDAO{
+
+    public RestaurantsDAO() {
+        setClazz(Restaurants.class);
+    }
+
 }

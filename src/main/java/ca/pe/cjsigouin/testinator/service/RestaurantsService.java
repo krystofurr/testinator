@@ -5,31 +5,40 @@
  */
 package ca.pe.cjsigouin.testinator.service;
 
+import ca.pe.cjsigouin.testinator.bean.RestaurantsBean;
+import ca.pe.cjsigouin.testinator.dao.IBaseDAO;
 import ca.pe.cjsigouin.testinator.dao.IRestaurantsDAO;
+import ca.pe.cjsigouin.testinator.exception.BeanCopyException;
 import ca.pe.cjsigouin.testinator.model.Restaurants;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author krystofurr
  */
 @Service("restaurantsService")
-@Transactional
-public class RestaurantsService implements IRestaurantsService {
-
-    @Autowired
+public class RestaurantsService
+    extends AbstractBaseService<RestaurantsBean, Restaurants> 
+        implements IRestaurantsService {
+    
+    @Resource(name = "restaurantsDao")
     IRestaurantsDAO dao;
 
     @Override
-    public void create(Restaurants obj) {
-        dao.create(obj);
+    protected void copyModelToBean(Restaurants model, RestaurantsBean bean) throws BeanCopyException {
+        BeanUtils.copyProperties(model, bean);
     }
 
     @Override
-    public List<Restaurants> findAll() {
-        return dao.findAll();
+    protected void copyBeanToModel(RestaurantsBean bean, Restaurants model) throws BeanCopyException {
+        BeanUtils.copyProperties(bean, model);
     }
+
+    @Override
+    protected IBaseDAO getDAO() {
+        return dao;
+    }
+
 }
