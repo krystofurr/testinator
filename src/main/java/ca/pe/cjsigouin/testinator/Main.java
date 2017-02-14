@@ -30,7 +30,7 @@ public class Main extends Application {
         SeleniumManager selenium = new SeleniumManager();
 
         // Load selenium drivers
-        SeleniumManager.loadDrivers();
+//        SeleniumManager.loadDrivers();
         // Load scenes
         scenes.loadScenes();
 

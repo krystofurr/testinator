@@ -13,8 +13,5 @@ public class SeleniumConfig {
     
     public final static String DRIVER_FIREFOX = "webdriver.gecko.driver";
     public final static String DRIVER_CHROME  = "webdriver.chrome.driver";
-    
-    public final static String DRIVER_PATH_FIREFOX = "/selenium/drivers/geckodriver";
-    public final static String DRIVER_PATH_CHROME  = "/selenium/drivers/chromedriver";
 
 }

@@ -5,7 +5,6 @@
  */
 package ca.pe.cjsigouin.testinator.manager;
 
-import ca.pe.cjsigouin.testinator.SeleniumConfig;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,10 +21,12 @@ public class SeleniumManager implements Runnable {
 
     private static WebDriver driver; // Currently used
     
-    public static void loadDrivers() {
+    public static void loadDriver(String browser, String path) {
 
-        System.setProperty(SeleniumConfig.DRIVER_FIREFOX, "/home/krystofurr/Programs/selenium/geckodriver");
-        System.setProperty(SeleniumConfig.DRIVER_CHROME,  "/home/krystofurr/Programs/selenium/chromedriver");
+        System.setProperty(browser, path);
+
+//        System.setProperty(SeleniumConfig.DRIVER_FIREFOX, "/home/krystofurr/Programs/selenium/geckodriver");
+//        System.setProperty(SeleniumConfig.DRIVER_CHROME,  "/home/krystofurr/Programs/selenium/chromedriver");
         
 //        drivers.put(SeleniumConfig.DRIVER_FIREFOX, new FirefoxDriver());
 //        drivers.put("ie", new InternetExplorerDriver());

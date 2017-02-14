@@ -85,6 +85,7 @@ public @Getter @Setter @ToString class BaseDAO<M extends BaseModel<Integer>> imp
         return entityManager.merge( entity );
    }
  
+   // TODO
    @Override
    public void delete( M entity ) throws BaseDAOException{
         try {
